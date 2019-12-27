@@ -1,0 +1,301 @@
+/**
+ * The styling for the redesigned tool panel, which will be gnerated in 
+ * javascript
+ */
+
+label{
+	cursor: pointer;
+}
+
+#toolPanel{
+	z-index: 9999;
+	position: fixed;
+	width: 240px;
+	background: var(--lightGrey);
+	color: black;
+	font-size: 14px;
+	font-family: Roboto, sans-serif;
+	box-shadow:
+		0 6px 10px 0 rgba(0,0,0,0.14),
+		0 1px 18px 0 rgba(0,0,0,0.12),
+		0 3px 5px -1px rgba(0,0,0,0.20);
+}
+
+#toolPanelHeader{
+	height: 60px;
+	line-height: 60px;
+	font-size: 30px;
+	display: flex;
+	flex-flow: row nowrap;
+	text-align: center;
+	font-family: inherit;
+}
+
+#toolPanelHeader .icon{
+	pointer-events: none;
+}
+
+.toolPanelTab{
+	flex: 1 1 auto;
+	font-family: inherit;
+	cursor: pointer;
+	background: var(--lightGrey);
+	color: var(--geisel);
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toolPanelTab.anchor{
+	color: var(--june);
+	box-shadow: none;
+}
+
+.toolPanelTab:hover{
+	color: var(--sea);
+}
+
+.toolPanelTab[active]{
+	box-shadow: none;
+	color: black;
+}
+
+#nodeTPTab .icon{
+	transform: rotateZ(180deg) scaleX(-1);
+}
+
+/* TOOL PANEL FIELDS */
+
+.tabFieldContainer{
+	display: none;
+	font-size: inherit;
+	line-height: 50px;
+	margin: 5px 5px 0px 5px;
+}
+
+.tabFieldContainer[active]{
+	display: block;
+}
+
+.toolPanelField{
+	background: white;
+	margin-bottom: 5px;
+	line-height: 50px;
+}
+
+.fieldName{
+	display: inline-block;
+	width: 50px;
+	font-size: inherit;
+	padding-left: 5px;
+}
+
+.fieldOptions{
+
+}
+
+.fieldOption{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 100%;
+	margin-right: 10px;
+}
+
+.radioOption{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+	width: 18px;
+	height: 18px;
+	margin: 0px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.radioOption.long{
+	width:40px;
+}
+
+.radioOption.long ~ label{
+	font-size: 12px;
+}
+
+.fieldOptions.border .fieldOption{
+	margin-right: 15px;
+}
+
+.selectedBorder{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0px;
+	height: 0px;
+	-webkit-transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  	transition:         all 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  	border-style: solid;
+  	border-color: transparent;
+  	border-width: 0px;
+}
+
+.radioOption:checked + .selectedBorder, .checkBoxOption:checked + .selectedBorder{
+	width: calc(100% + 5px*2);
+	height: calc(100% + 5px*2);
+	top: -5px;
+	left: -5px;
+	border-width: 1px;
+	border-color: var(--sea);
+	box-sizing: border-box;
+}
+
+#boldOption:checked + .selectedBorder, #italicOption:checked + .selectedBorder{
+	width: calc(100% + 3px*2);
+	height: calc(100% + 3px*2);
+	top: -3px;
+	left: -3px;	
+}
+
+.radioOption.color{
+}
+
+.radioOption.shape{
+	font-size: 18px;
+}
+
+.radioOption.shape[value="diamond"]{
+	transform: rotateZ(45deg) scale(0.707);
+}
+
+.radioOption.rightEnd.arrow{
+	transform: rotateY(180deg);
+}
+
+.sliderField{
+	max-width: 100px;
+	margin-right: 15px;
+	vertical-align: middle;
+}
+
+.sliderReadOut{
+	color: #1A1A1A;
+	vertical-align: middle;
+	font-size: 12px;
+}
+
+.radioOption.long~label{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	left:0px;
+}
+
+.borderType{
+	border: none !important;
+}
+
+.radioOption.borderType[value="solid"]~label{ border-bottom: 2px solid black; }
+.radioOption.borderType[value="dashed"]~label{ border-bottom: 2px dashed black; }
+
+.lineOptionLabel{
+	height: 0px;
+	border-top: 2px solid #1A1A1A;
+	top:50%;
+}
+
+.radioOption.lineType.dashed~.lineOptionLabel{ border-top-style: dashed; }
+
+.selectField{
+	font-size: 12px;
+	width: auto;
+	max-width: 100px;
+	margin-right: 15px;
+	border: none;
+	background: transparent;
+}
+
+#labelField .selectField{
+	max-width: 60px;
+}
+
+#lineWeightSelector{
+	width: 45px;
+}
+
+.selectField~.lineOptionLabel{
+	display: inline-block;
+	vertical-align: middle;
+	width: 90px;
+}
+
+.checkBoxOption{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+	width: 20px;
+	text-align: center;
+}
+
+#labelField .fieldOption, #labelField .selectField{
+	margin-right: 5px;
+}
+
+#boldOption, #italicOption{
+	font-size: 20px;
+}
+
+.toggleButton, .button{
+	display: inline-block;
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	width:100%;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+}
+
+.toggleButton:hover, .button:hover{
+	background: var(--sea, black);
+}
+
+.toggleButtonField{
+	appearance: none;
+	display: none;
+}
+
+.toggleButton .icon, .button .icon{
+	display: inline-block;
+	font-size:18px;
+	width: 18px;
+	margin-right: 15px;
+	margin-left: -33px;
+}
+
+input:checked + .toggleButton{
+	box-shadow: none
+}
+
+.button.small{
+	width: auto;
+	padding: 0px 10px;
+	line-height: 30px;
+	vertical-align: middle;
+}
+
+#eraserField, #uploadImageField, #pinImageField{
+	background: none;
+}
+
+#elementSelector{
+	width: auto;
+	max-width: 30%;
+	padding-left: 5px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#styleSelector{
+	width: auto;
+	max-width: 60%;
+	text-align: center;
+}

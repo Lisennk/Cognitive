@@ -1,0 +1,81 @@
+/* Disable interactions on transcluded minimap */
+body[transient-is-minimap='true']{
+	pointer-events: none;
+}
+
+body[transient-is-minimap='true'] #canvas{
+	transform: none !important;
+}
+
+#minimap-panel{
+	z-index: 9999;
+	position: fixed;
+	width: 240px;
+	background: var(--lightGrey);
+	color: black;
+	font-size: 14px;
+	font-family: Roboto, sans-serif;
+	box-shadow:
+		0 6px 10px 0 rgba(0,0,0,0.14),
+		0 1px 18px 0 rgba(0,0,0,0.12),
+		0 3px 5px -1px rgba(0,0,0,0.20);
+}
+
+#minimap-wrapper{
+	position: relative;
+	padding: 10px 10px 0px 10px;
+}
+
+#minimap{
+	width: 220px;
+	height: 124px;
+	overflow:hidden;
+	position: relative !important;
+}
+
+#minimap-bg{
+	position: absolute;
+	transform-origin: 0 0;
+	top: 0;
+	left: 0;
+}
+
+#minimap-barrier{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+}
+
+#minimap-placer{
+	position: absolute;
+	background-color: blue;
+	opacity: 0.25;
+	z-index: 10;
+}
+
+/* BUTTONS */
+
+.minimap-button{
+	display: inline-block;
+	width:25%;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 30px;
+	line-height: 60px;
+	cursor: pointer;
+	color: black;
+}
+
+.minimap-button .icon:hover{
+	color: var(--sea);
+}
+
+.minimap-button.anchor{
+	color: var(--june);
+}
+
+#minimap-zoom-buttons .icon{
+	display: block;
+	font-size: 19px;
+}
